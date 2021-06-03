@@ -1,0 +1,509 @@
+shell scripting and python and scripting. AWS, Azure cloud, Jenkens, terrafome, learn python.  docker and kubernates 
+
+Two-Factor Authentication Backup Codes
+
+350587
+508531
+200021
+147471
+336808
+734961
+675453
+631217
+464371
+572890
+
+nick.escalona@revature.com
+
+install slack
+
+install new powershell
+
+https://discord.gg/PB3FJHum
+
+if not recording remind him to start recording. 
+
+week by week 
+monday  -- evaluations & project work
+				quiz, QC, 1-on-1 interview, exercise
+
+tuesday-thursday -- training
+
+friday -- may be let out early if done 				before end of day.
+
+1 - powershell, bash, python
+2 - git, ansible
+3 - cloud, azure, docker, SQL *p0 due*
+4 - devops, azure, ci
+5 - azure devops, cd *p1 due*
+6 - kubernetes, aks, helm, prometheusm 		grafana
+7 - aws, IAC, terraform *p2 due*
+8 - portfolio
+9 - panel
+10 - p3 presentation
+
+
+bash syntax -
+	[command / program] [arguments/options] 
+
+	pwd : print working directory
+
+	ls : list conents of directory
+
+	mkdir : make directory
+
+	cd : change directory
+
+	rm : remove but does not work on directory. use the -r flag to recursively delete everything in the folder and the folder its self.
+
+	rmdir : remove directory
+
+path syntax -
+	C:\revature\ -> /c/revature
+
+	absolute path: begin with / or ~ unambigousuly refer to one path, regardless of your current directory
+
+	relative path: begin with anything else the implicit context is the current directory
+
+	. current directory 
+	.. parent directory
+
+SPACES ARE IMPORTANT USE QUOTES or '/ '
+
+~/.bash_history
+	file above stores history of commands
+
+* is the wild card symbol
+
+cat : print contents of text file.
+
+
+in a linux type program (especially one used from the command line) there are three "streams" that the programs uses.
+
+stdin (standard input)(0)
+	some commands look here for some type of input.
+	by default this is keyboard input into the terminal.
+stdout (standard output)(1)
+	by default, this is printed ot the display.
+stderr (standard error)(2)
+	error messages/dia
+
+> [file] 
+will redirect stdout to a file (overwrite it)
+
+>> [file]
+will redirect stdout to a file (appending it)
+
+[cmd 1] | [cmd 2]
+redirect stdout of cmd 1 to stdin of cmd2
+
+1. touch empty.txt
+2. mv empty.txt rename.txt
+3. mkdir newfolder
+4. mv rename.txt newfolder
+5. rm -r newfolder
+6. echo 'output text'
+7. which dotnet  /c/Program Files/dotnet/dotnet  
+   which git   /mingw64/bin/git 
+8. grep 'test' testfile.txt
+9. find . -name "*.txt"
+10. cat rename.txt
+11. echo "test" > testfile.txt
+
+writing scripts in power shell.
+
+learn more pyhon. 
+
+env
+
+The env command shows all active variables.
+
+the PATH variable has all the paths where things are installed. It allows you to open things from the command line.
+
+sed is a useful command. manly used for substitutions.
+
+echo $PATH | sed "s/:/\n/g"
+
+echo $PATH | sed "s/:/\n/g" | grep Roaming
+
+.bashrc is run everytime the terminal opens.
+
+most complicated parts of bash are just text substitutions/expansions and exit codes.
+
+everything that executes in bash has a return value.
+
+echo $?
+	exit code of previous command.
+exit codes.
+0 means success, anything else means error.
+by defualt the exit code is 0.
+
+double parentheses is for arithmetic and parameters don't need to be prefixed with $ and they are treated like numbers not text.
+
+set -x
+		add after first line to debug and see expansons.
+
+to turn inputs into an array
+	arguments = ("$@")
+	echo "The first one is: ${arguments[0]}"
+
+	for items in ${arguments[@]}; do
+		echo $item
+	done
+
+&& returns 0 if both commands exit codes were 0
+	runs first command, if it was nonzero then we stop there.
+|| returns 0 if either commands exit code was 0
+	runs first command, if it was zero, then we stop there.
+This behavior is called "short-circuiting"
+
+echo text | grep -q tex && echo "previous command successful"
+
+echo text | grep -q abc || echo "previous command unsuccessful"
+
+; lets you put multiple commands on the same line.
+
+normally variables are global scope.
+
+brace expansion syntax
+	echo filename{.txt, .png,.sh}
+	mv my-script{.sh,}
+
+command substitution
+ echo $(echo 4) + $(echo 1) = 5
+ echo current dir is $(pwd)
+ echo current dir is `pwd`
+
+grep for filtering/searching text
+find for searching for files (can execute a command for each file)
+printf for formatting text in more complex ways than echo
+sed for replacing text based on patterns (regex)
+awk for parsing text and processing it.
+xarg for dynamically building one command's arguments from another command's output
+curl/wget for downloading webpages (or sending any http requests)
+
+python has several data types
+
+numeric data types
+
+int, float
+
+int for whole numbers
+
+x -10 *2
+
+python is dynamically typed, so we can assign whatever value we want to any variable ... but type annotations are a good way to keep orgtanized.
+
+float for fractional numbers or very large numbers.
+y: float = 10.5
+
+we have typical arithmatic operators ** for exponent, +-*/%
+// for integer division (regular . will return fractional floats)
+
+print (5//2) rounds down to the nearsest integer.
+
+comparison operators:
+< <= == >= >
+
+boolean operators are spelled out as words
+print(3 < 4 or 5 < 4)
+
+str data type (string)
+use single quotes or double quotes.
+index strings to get individual characters, which are still type str
+
+data = "asdf"
+data = data[0]
+
+print('abc' in 'abcdef') will return true
+
+data2 = [3,2,6,7]
+
+print(data2[2])
+
+we have if else conditionals
+
+data = int(input('enter a number: '))
+if data == 0:
+	print('it was zero')
+elif data < 0:
+	print('negative')
+else:
+	data = 'abc'
+	print(data)
+print(type(data))
+
+while input('enter x: ') != 'x' :
+	print('error, enter x')
+
+
+for i in range range(0,5,1):  
+	print(i)
+# usually you dont even write loops like that ... you figure out a way to iterate over the collections of data that you'd be using that "i" to access
+
+sequence = [1, 3, 7, 2, 5]
+for item in sequence:
+	print(item)
+
+
+for i, item in enumerate(sequence):
+	if i < 0:
+		print(item == sequence[i-1])
+
+azhya.knox@revature.com
+
+you introduce functions with the def keyword
+functions have a name and parameter list
+but because it is dynamically typed, there is no overloading
+the paramter is optional
+def output(thing = None):
+
+python will try to detect errors and prevent them from happening.
+
+use try except finally when you expect and error might occure and you eant to handle it. try bloack contains the code that might raise the error. execution will jump to the exept vloack if a matching error is raised. The code in finally will executed no matter what. Mostly useful for cleaning up resources that need to always be cleaned up.
+
+def add_all(*list):
+	return sum(list)
+
+print(add_all(2,2,3))
+
+
+you can give arguments name to make your code more readable.
+
+if arguments have a defult vaule you can skip over it.
+
+you can convert anything into a str with the str() function.
+
+find(find a substring's index in a string)
+
+print('{0} / {1} result is {2}'.format(34, 5, 34/5))
+
+now we have fstrings:
+var1 = 34
+var2 = 5
+print(f'{var1} / {var2} = {var1 /var2}')
+
+replace (replace some substrin with another.)
+split breaks up the string inot a list of strings by some delimiter
+
+strip drops leading and trailing chars (white space by defualt)
+
+slicing: (not just for strings, also for any sequences)
+
+data = 'abcedefghijkl'
+print(data[1]) #b
+print(data[1:5]) #bcde
+print(data[:6])#abcdef
+print(data[-1])# l
+print(data[-3]) #j
+print(data[-len(data)]) #a
+print(data[3:-2]) #defghij
+print(data[::2]) #acegik
+print(data[8:3:-3]) # if
+
+lists
+data = [1,2,3]
+lists are mutable 
+data[0] = 0
+they can grow and shrink
+data.append(4)
+data += [5,6,7]
+del data[3]
+print([3,4]*2)
+print([3,4] < [3,5])
+itertools have a lot of useful tools like cartesian multiplication
+s.extend(t) or  s+= t
+s.insert(i,x)
+
+can make a list out of any sequence 
+list(iterable)
+
+tuples are immutable sequences typically collections of heterogenous data.
+
+A set object is an unordered collection of distinct hashable objects. very fast to check for membership in. This is because of the properties of the underlying hashtable data structure)
+sets can't have duplicates, if you try to add a dublicate nothing happends.
+
+registered_usernames = {'bob', 'fred', 'nick'}
+
+registered_usernames = set() to make empty set
+
+def create_new_username(input):
+	if input in registered_usernames:
+		return False
+	registered_usernames.add(input)
+		return true.
+
+#dicts
+
+#dicts have a lot in common with sets. they are associative maps. (they don't contain just one value at a time, they contain key value pairs)
+
+person_age_map = {
+	'bob': 35,
+	'tom': 24
+}
+
+person_age_map['bob'] == 35
+
+it's very common to use dicts anytime your code will be looking up one value by another value
+
+for x in person_age_map: # iterate over keys
+	print(key)
+
+for x in person_age_map.values(): # iterate over values
+	print(key)
+for x in person_age_map.items(): # iterate over both
+	print(key, value)
+
+person_age_map.get('nick', default = 0)
+
+check if key is in the dict at all
+'nick' in person_age_map
+
+chekc if value is in the dict (not as fast as seaching for key)
+35 in person_age_map.values()
+
+#comprehensions
+collection = []
+for x in data:
+	collection.append(x**2)
+
+#list comprehensions
+
+collection2 = [x ** 2 for x in data]
+collection2 = [x * y for x in data for y in data]
+
+
+#dict comprehension
+nums_to_squares = {x: x**2 for x in data}
+squares_to_nums = {x**2: x for x in data}
+
+** packs unrecognized arguments into a dict
+
+the is operator compares by refernce.
+
+import sys
+print (sys.argv)
+
+if len(sys.argv) <1:
+	raise Exception('must provide path')
+
+file = open(sys.argv[1], 'r')
+#file.read() # read whole contents into a string.
+#file.readline() one line contents into str. if no more lines it returns an empty string.
+
+#file.readlines() #whole file contents into a list of strs (lines)
+
+lines = []
+for line in file:
+	lines.append(line)
+	print(line, end='')
+
+file.close()
+
+file = None
+try:
+	file = open(sys.arg[1] + '.bak', 'w')
+	file.writelines(lines)
+finally:
+	if file:
+		file.close()
+
+with open(sys.arg[1] + '.bak', 'w') as file:
+	file.writelines(lines)
+
+the pickle module serializes and deserializes data.
+
+PICKLE IS NOT secure never inpickle data that could have come from an instrusted source.
+
+
+there is a built in module that's good for handling command line argument is called argparse. good for when you don't want to manually deal with sys.argv
+
+a good package for text based interfaces is blessings. 
+
+a namespace is a context where variables live the way that python interprets any name of a variable like fred, Person, print, str etc.
+
+LEGB:
+first it checks the local namespace
+then any enclosing namespaces
+next the global namespace 
+then the built-in namespace (print, str)
+
+in python, functions and classes have their own namespaces.
+
+you can nest functions inside of other functions
+
+
+# to open file, in a code context, then you open a file there is always a question of mode, read, write, read write, append. the default mode is 't' (text mode). 
+
+the str type is an abstraction of immutable sequence of unicode code points.
+
+in windows new line /r/n while one unix machine it is /n.
+
+open('file-oath', mode)
+
+tuples are immutable and tuples are defined with parentesis () while lists are defined with [].
+
+numbers = (1,2,4)
+print(numbers[0])
+
+trying to change a tuple causes an error
+
+
+
+unpacking:
+
+coordinates = (1,2,3)
+
+x,y,z = coordinates
+
+
+dictionaries:
+when you want to store things as keyvalue pairs. use {} curly baces when instantiating a dictionary. Each key needs to be unique.
+
+customer = {
+	"name" :John Smith,
+	"age" : 30,
+	"is_verified : true"
+}
+
+print(customer["name"])
+print(customer.get("name"))
+
+customer["name"] = "Jack Smith"
+
+#we can also add a new key to the dictionary
+customer["birthday"] = "Jan 1 1980"
+
+to split up a string by spaces:
+words = message.split(' ')
+
+
+when ever you define a function you must add two lines breaks imeediatly after. Must define function before you call it.
+
+make a git hub account.
+
+add git username to revature account.
+
+
+version control system(VCS):
+	track previous versions and changes to something. 
+
+source control/code management (SCM):
+	specifically about source code.
+
+mercurial(hg)
+Subversion(svn)
+TFS
+perforce
+
+centralized VCS - everyone downloads only the part they need from a central server.
+
+distributed VCS - every copy has all of the history and the full program and connections between each persons version.
+
+for git in pactice we are going to have a central true version of the program.
+
+two ways to create a repository. create a local one then upload or create one remoltely then pull down into local machine.
+
+a
+
+
