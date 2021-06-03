@@ -1,6 +1,10 @@
 shell scripting and python and scripting. AWS, Azure cloud, Jenkens, terrafome, learn python.  docker and kubernates 
 
+test test test
+
 Two-Factor Authentication Backup Codes
+
+
 
 350587
 508531
@@ -505,5 +509,7 @@ for git in pactice we are going to have a central true version of the program.
 two ways to create a repository. create a local one then upload or create one remoltely then pull down into local machine.
 
 a
+
+testtest22
 
 
